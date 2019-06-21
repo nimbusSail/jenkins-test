@@ -1,0 +1,36 @@
+// buildscript必须在顶部，注意位置
+buildscript {
+	repositories {
+		// 优先使用国内源
+		maven { url 'https://maven.aliyun.com/repository/public' }
+		mavenCentral()
+	}
+	dependencies {
+		// 让spring-boot支持gradle
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+// 使用spring boot
+apply plugin: "org.springframework.boot"
+// 使用spring boot的自动依赖管理
+apply plugin: 'io.spring.dependency-management'
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
